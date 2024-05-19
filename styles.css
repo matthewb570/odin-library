@@ -33,7 +33,6 @@ button.icon {
     background-color: white;
     width: 30px;
     height: 30px;
-    cursor: pointer;
     border-radius: 15px;
 }
 
@@ -41,11 +40,13 @@ button.icon {
     background-image: var(--delete-icon);
 }
 
-button.icon:hover {
+button.icon:hover,
+.card-additional-info .read-status:hover {
     background-color: lightgray;
 }
 
-button.icon:active {
+button.icon:active,
+.card-additional-info .read-status:active {
     background-color: darkgray;
 }
 
@@ -72,6 +73,7 @@ button.icon:active {
     grid-column: 1 / -1;
     
     display: flex;
+    align-items: center;
     gap: 20px;
 
     font-size: 1rem;
@@ -79,4 +81,16 @@ button.icon:active {
 
 .card-additional-info .page-count {
     flex: 1
+}
+
+.card-additional-info .read-status {
+    border-style: none;
+    background-color: white;
+    border-radius: 15px;
+    font-size: 1rem;
+    padding: 5px 10px;
+}
+
+button {
+    cursor: pointer;
 }
