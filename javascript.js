@@ -17,14 +17,26 @@ function addBookToLibrary(title, author, description, numPages, haveRead) {
 
 function displayBooks() {
     const libraryContainer = document.querySelector(".library-container");
+    while(libraryContainer.firstChild) {
+        libraryContainer.removeChild(libraryContainer.lastChild);
+    }
 
-    for (book of myLibrary) {
+    for (bookIndex in myLibrary) {
+        let book = myLibrary[bookIndex];
+        
         let card = document.createElement("div");
         card.classList.add("card");
 
         let title = document.createElement("div");
         title.classList.add("card-title");
         title.textContent = book.title;
+
+        let btnDelete = document.createElement("button");
+        btnDelete.classList.add("icon");
+        btnDelete.classList.add("delete");
+        btnDelete.type = "button";
+        btnDelete.addEventListener("click", handleDelete);
+        btnDelete.setAttribute("index", bookIndex);
 
         let author = document.createElement("div");
         author.classList.add("card-author");
@@ -49,12 +61,18 @@ function displayBooks() {
         additionalInfo.appendChild(readStatus);
 
         card.appendChild(title);
+        card.appendChild(btnDelete);
         card.appendChild(author);
         card.appendChild(description);
         card.appendChild(additionalInfo);
 
         libraryContainer.appendChild(card);
     }
+}
+
+function handleDelete(event) {
+    myLibrary.splice(event.target.getAttribute("index"), 1);
+    displayBooks();
 }
 
 addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "A story about hobbits.", 295, false);

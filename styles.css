@@ -1,4 +1,6 @@
 :root {
+    --delete-icon: url(./images/close.svg);
+    
     --standard-box-shadow: rgb(156, 156, 156) 1px 1px 5px;
 
     font-family: 'Roboto', sans-serif;
@@ -13,6 +15,7 @@
 .card {
     display: grid;
     grid-template-rows: max-content 1fr 3fr max-content;
+    grid-template-columns: 1fr max-content;
     gap: 10px;
     
     height: 250px;
@@ -24,22 +27,50 @@
     box-shadow: var(--standard-box-shadow);
 }
 
+button.icon {
+    background-repeat: no-repeat;
+    border-style: none;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.icon.delete {
+    background-image: var(--delete-icon);
+}
+
+button.icon:hover {
+    background-color: lightgray;
+}
+
+button.icon:active {
+    background-color: darkgray;
+}
+
 .card-title {
     font-size: 1.4rem;
     font-weight: 700;
 }
 
 .card-author {
+    grid-column: 1 / -1;
+
     font-size: 1.2rem;
     font-style: italic;
 }
 
 .card-description {
+    grid-column: 1 / -1;
+
     font-size: 1rem;
     font-style: italic;
 }
 
 .card-additional-info {
+    grid-column: 1 / -1;
+    
     display: flex;
     gap: 20px;
 
