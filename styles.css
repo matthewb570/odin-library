@@ -20,6 +20,14 @@ body {
     padding: 0px 10px 10px 10px;
 }
 
+.header {
+    display: flex;
+}
+
+.header h1 {
+    flex: 1;
+}
+
 .library-container {
     flex: 1;
 
