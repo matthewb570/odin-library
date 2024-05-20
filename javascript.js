@@ -2,8 +2,17 @@ const diagAddBook = document.querySelector("#dialog-add-book");
 const btnOpenDialog = document.querySelector("button.open-dialog");
 const btnCloseDialog = document.querySelector("#dialog-add-book .close");
 
+const txtTitle = document.querySelector("#txt-title");
+const txtAuthor = document.querySelector("#txt-author");
+const txtNumPages = document.querySelector("#txt-num-pages");
+const txtDescription = document.querySelector("#txt-description");
+const radReadYes = document.querySelector("#rad-read-yes");
+const radReadNo = document.querySelector("#rad-read-no");
+const btnSubmit = document.querySelector("#dialog-add-book button.submit");
+
 btnOpenDialog.addEventListener("click", handleDialogOpen);
 btnCloseDialog.addEventListener("click", handleDialogClose);
+btnSubmit.addEventListener("click", handleAddNewBook);
 
 function handleDialogOpen(event) {
     diagAddBook.showModal();
@@ -11,6 +20,21 @@ function handleDialogOpen(event) {
 
 function handleDialogClose(event) {
     diagAddBook.close();
+}
+
+function handleAddNewBook(event) {
+    event.preventDefault();
+
+    myLibrary.push(new Book(txtTitle.value, txtAuthor.value, txtDescription.value, txtNumPages.value, radReadYes.checked));
+    displayBooks();
+
+    diagAddBook.close();
+    txtTitle.value = "";
+    txtAuthor.value = "";
+    txtDescription.value = "";
+    txtNumPages.value = "";
+    radReadYes.checked = false;
+    radReadNo.checked = false;
 }
 
 const myLibrary = [];
