@@ -34,28 +34,28 @@
                         <div class="form-column">
                             <label for="txt-title">
                                 <div>Title</div>
-                                <input id="txt-title" type="text">
+                                <input id="txt-title" name="txtTitle" type="text" required>
                             </label>
                             <label for="txt-author">
                                 <div>Author</div>
-                                <input id="txt-author" type="text">
+                                <input id="txt-author" type="text" required>
                             </label>
                             <label for="txt-num-pages">
                                 <div>Number of Pages</div>
-                                <input id="txt-num-pages" type="number">
+                                <input id="txt-num-pages" type="number" required min="1">
                             </label>
                         </div>
                         <div class="form-column">
                             <label for="txt-description" class="description-label">
                                 <div>Description</div>
-                                <textarea id="txt-description"></textarea>
+                                <textarea id="txt-description" required></textarea>
                             </label>
                         </div>
                     </fieldset>
                     <fieldset class="have-read">
                         <legend>Have you read this book?</legend>
                         <label for="rad-read-yes">
-                            <input id="rad-read-yes" name="radReadStatus" type="radio">
+                            <input id="rad-read-yes" name="radReadStatus" type="radio" required>
                             <span>Yes</span>
                         </label>
                         <label for="rad-read-no">
