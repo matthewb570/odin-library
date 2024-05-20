@@ -257,3 +257,7 @@ dialog {
     background-color: var(--background-accent-color-light);
     border-radius: 10px;
 }
+
+dialog::backdrop {
+    backdrop-filter: blur(5px);
+}
