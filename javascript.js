@@ -11,6 +11,8 @@ const radReadYes = document.querySelector("#rad-read-yes");
 const radReadNo = document.querySelector("#rad-read-no");
 const btnSubmit = document.querySelector("#dialog-add-book button.submit");
 
+const myLibrary = [];
+
 btnOpenDialog.addEventListener("click", handleDialogOpen);
 btnCloseDialog.addEventListener("click", handleDialogClose);
 btnSubmit.addEventListener("click", handleAddNewBook);
@@ -27,7 +29,8 @@ function handleAddNewBook(event) {
     event.preventDefault();
 
     if (formNewBook.reportValidity()) {
-        myLibrary.push(new Book(txtTitle.value, txtAuthor.value, txtDescription.value, txtNumPages.value, radReadYes.checked));
+        myLibrary.push(new Book(txtTitle.value, txtAuthor.value,
+            txtDescription.value, txtNumPages.value, radReadYes.checked));
         displayBooks();
 
         diagAddBook.close();
@@ -40,17 +43,18 @@ function handleAddNewBook(event) {
     }
 }
 
-const myLibrary = [];
-
 function Book(title, author, description, numPages, haveRead) {
     this.title = title;
     this.author = author;
     this.description = description;
     this.numPages = numPages;
     this.haveRead = haveRead;
-    this.info = function() { // TODO: Add to prototype
-        return this.title + " by " + this.author + ", " + this.numPages + " pages, " + (this.haveRead ? "already read" : "not read yet");
-    }
+
+}
+
+Book.prototype.info = function() {
+    return this.title + " by " + this.author + ", " + this.numPages
+        + " pages, " + (this.haveRead ? "already read" : "not read yet");
 }
 
 function addBookToLibrary(title, author, description, numPages, haveRead) {
@@ -73,12 +77,12 @@ function displayBooks() {
         title.classList.add("card-title");
         title.textContent = book.title;
 
-        let btnClose = document.createElement("button");
-        btnClose.classList.add("icon");
-        btnClose.classList.add("close");
-        btnClose.type = "button";
-        btnClose.addEventListener("click", handleClose);
-        btnClose.setAttribute("index", bookIndex);
+        let btnDelete = document.createElement("button");
+        btnDelete.classList.add("icon");
+        btnDelete.classList.add("close");
+        btnDelete.type = "button";
+        btnDelete.addEventListener("click", handleDelete);
+        btnDelete.setAttribute("index", bookIndex);
 
         let author = document.createElement("div");
         author.classList.add("card-author");
@@ -106,7 +110,7 @@ function displayBooks() {
         additionalInfo.appendChild(btnReadStatus);
 
         card.appendChild(title);
-        card.appendChild(btnClose);
+        card.appendChild(btnDelete);
         card.appendChild(author);
         card.appendChild(description);
         card.appendChild(additionalInfo);
@@ -115,7 +119,7 @@ function displayBooks() {
     }
 }
 
-function handleClose(event) {
+function handleDelete(event) {
     myLibrary.splice(event.target.getAttribute("index"), 1);
     displayBooks();
 }
@@ -125,8 +129,3 @@ function handleReadStatusChange(event) {
     book.haveRead = !book.haveRead;
     event.target.textContent = book.haveRead ? "Read" : "Not Read";
 }
-
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", "A story about hobbits.", 295, false);
-addBookToLibrary("Harry Potter and the Sorcerer's Stone", "J. K. Rowling", "A story about wizards.", 100, true);
-addBookToLibrary("The Hunger Games", "Suzanne Collins", "A story about Panem.", 100, true);
-displayBooks();
