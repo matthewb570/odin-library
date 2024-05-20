@@ -1,3 +1,18 @@
+const diagAddBook = document.querySelector("#dialog-add-book");
+const btnOpenDialog = document.querySelector("button.open-dialog");
+const btnCloseDialog = document.querySelector("#dialog-add-book .close");
+
+btnOpenDialog.addEventListener("click", handleDialogOpen);
+btnCloseDialog.addEventListener("click", handleDialogClose);
+
+function handleDialogOpen(event) {
+    diagAddBook.showModal();
+}
+
+function handleDialogClose(event) {
+    diagAddBook.close();
+}
+
 const myLibrary = [];
 
 function Book(title, author, description, numPages, haveRead) {
