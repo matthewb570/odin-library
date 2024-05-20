@@ -31,12 +31,12 @@ function displayBooks() {
         title.classList.add("card-title");
         title.textContent = book.title;
 
-        let btnDelete = document.createElement("button");
-        btnDelete.classList.add("icon");
-        btnDelete.classList.add("delete");
-        btnDelete.type = "button";
-        btnDelete.addEventListener("click", handleDelete);
-        btnDelete.setAttribute("index", bookIndex);
+        let btnClose = document.createElement("button");
+        btnClose.classList.add("icon");
+        btnClose.classList.add("close");
+        btnClose.type = "button";
+        btnClose.addEventListener("click", handleClose);
+        btnClose.setAttribute("index", bookIndex);
 
         let author = document.createElement("div");
         author.classList.add("card-author");
@@ -64,7 +64,7 @@ function displayBooks() {
         additionalInfo.appendChild(btnReadStatus);
 
         card.appendChild(title);
-        card.appendChild(btnDelete);
+        card.appendChild(btnClose);
         card.appendChild(author);
         card.appendChild(description);
         card.appendChild(additionalInfo);
@@ -73,7 +73,7 @@ function displayBooks() {
     }
 }
 
-function handleDelete(event) {
+function handleClose(event) {
     myLibrary.splice(event.target.getAttribute("index"), 1);
     displayBooks();
 }

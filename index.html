@@ -22,5 +22,48 @@
                 </div>
             </div> -->
         </div>
+        <dialog id="dialog-add-book">
+            <div class="dialog-container">
+                <div class="dialog-title">Add a New Book</div>
+                <button type="button" class="icon close"></button>
+                <form id="form-new-book" action="dialog">
+                    <fieldset class="basic-information">
+                        <legend>Basic Information</legend>
+                        <div class="form-column">
+                            <label for="txt-title">
+                                <div>Title</div>
+                                <input id="txt-title" type="text">
+                            </label>
+                            <label for="txt-author">
+                                <div>Author</div>
+                                <input id="txt-author" type="text">
+                            </label>
+                            <label for="txt-num-pages">
+                                <div>Number of Pages</div>
+                                <input id="txt-num-pages" type="number">
+                            </label>
+                        </div>
+                        <div class="form-column">
+                            <label for="txt-description" class="description-label">
+                                <div>Description</div>
+                                <textarea id="txt-description"></textarea>
+                            </label>
+                        </div>
+                    </fieldset>
+                    <fieldset class="have-read">
+                        <legend>Have you read this book?</legend>
+                        <label for="rad-read-yes">
+                            <input id="rad-read-yes" name="radReadStatus" type="radio">
+                            <span>Yes</span>
+                        </label>
+                        <label for="rad-read-no">
+                            <input id="rad-read-no" name="radReadStatus" type="radio">
+                            <span>No</span>
+                        </label>
+                    </fieldset>
+                    <button type="submit" class="submit">Add</button>
+                </form>
+            </div>
+        </dialog>
     </body>
 </html>
