@@ -43,18 +43,25 @@ function handleAddNewBook(event) {
     }
 }
 
-function Book(title, author, description, numPages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.description = description;
-    this.numPages = numPages;
-    this.haveRead = haveRead;
+class Book {
+    title;
+    author;
+    description;
+    numPages;
+    haveRead;
 
-}
+    constructor(title, author, description, numPages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.numPages = numPages;
+        this.haveRead = haveRead;
+    }
 
-Book.prototype.info = function() {
-    return this.title + " by " + this.author + ", " + this.numPages
-        + " pages, " + (this.haveRead ? "already read" : "not read yet");
+    get info() {
+        return this.title + " by " + this.author + ", " + this.numPages
+            + " pages, " + (this.haveRead ? "already read" : "not read yet");    
+    }
 }
 
 function addBookToLibrary(title, author, description, numPages, haveRead) {
